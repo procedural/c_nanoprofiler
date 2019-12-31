@@ -3,15 +3,23 @@ Nanoprofiler for C / C++
 
 Supported architectures: Linux (x64), Windows (x64, Win32, UWP)
 
-Usage:
+Usage (`chmod +x main.c && ./main.c`):
 
 ```C
+#if 0
+rm -f a.out
+clang main.c
+./a.out 2> trace.json
+exit
+#endif
+
 #include "nanoprofiler.h"
+#include "nanoprofiler.c"
 
 int main() {
   NanoprofilerAllocate(5000000);
   NanoprofilerBegin(0, "main");
-  ...
+  // ...
   NanoprofilerEnd(0, "main");
   NanoprofilerOutputAndFree(0);
 }
